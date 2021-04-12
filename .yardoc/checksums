@@ -1,0 +1,4 @@
+lib/sparmap.rb a968005f52a2e94dc7b68907dec6c50b648c4b69
+lib/sparmap/pool.rb cca16870be3ef15df975e1cb5eb464aa90a1cf3b
+lib/sparmap/version.rb 7d8ad0b4c55e58e61ad0168092d3a70fb9652f7b
+lib/sparmap/up_down_barrier.rb d93b4002aa74be32a889aa1d3485b1b25385e903

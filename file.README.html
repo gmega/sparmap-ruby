@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  File: README
+  
+    &mdash; Documentation by YARD 0.9.26
+  
+</title>
+
+  <link rel="stylesheet" href="css/style.css" type="text/css" />
+
+  <link rel="stylesheet" href="css/common.css" type="text/css" />
+
+<script type="text/javascript">
+  pathId = "README";
+  relpath = '';
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div class="nav_wrap">
+      <iframe id="nav" src="file_list.html?1"></iframe>
+      <div id="resizer"></div>
+    </div>
+
+    <div id="main" tabindex="-1">
+      <div id="header">
+        <div id="menu">
+  
+    <a href="_index.html">Index</a> &raquo; 
+    <span class="title">File: README</span>
+  
+</div>
+
+        <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="class_list.html">
+
+        <svg width="24" height="24">
+          <rect x="0" y="4" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="12" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="20" width="24" height="4" rx="1" ry="1"></rect>
+        </svg>
+    </a>
+  
+</div>
+        <div class="clear"></div>
+      </div>
+
+      <div id="content"><div id='filecontents'><h1 id="sparmap">sparmap</h1>
+
+<p>A Simple PARallel MAP for Ruby. Based on the 
+<a href="https://docs.python.org/3/library/multiprocessing.html#multiprocessing.pool.Pool">Python multiprocessing API</a> API,
+implements an unordered map operation which runs on threads. </p>
+
+<h2 id="installation">Installation</h2>
+
+<p>The easiest way to install this gem is using <a href="https://bundler.io/">Bundler</a>. Add this line to your application&#39;s Gemfile:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_gem'>gem</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>sparmap</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='label'>git:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>https://github.com/gmega/sparmap-ruby</span><span class='tstring_end'>&#39;</span></span>
+</code></pre>
+
+<p>And then execute:</p>
+
+<pre class="code ruby"><code class="ruby">$ bundle install
+</code></pre>
+
+<h2 id="usage">Usage</h2>
+
+<p><code>sparmap</code> exposes a simple API where you create a thread pool and then fire away your tasks. For example, 
+we could download and extract the titles of HTML pages in parallel doing this:  </p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>open-uri</span><span class='tstring_end'>&#39;</span></span>
+<span class='id identifier rubyid_require'>require</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>sparmap</span><span class='tstring_end'>&#39;</span></span>
+
+<span class='const'>URL_LIST</span> <span class='op'>=</span> <span class='qwords_beg'>%w(</span><span class='words_sep'>
+  </span><span class='tstring_content'>https://en.wikipedia.org/wiki/WebCrawler</span><span class='words_sep'>
+  </span><span class='tstring_content'>https://en.wikipedia.org/wiki/University_of_Washington</span><span class='words_sep'>
+  </span><span class='tstring_content'>https://en.wikipedia.org/wiki/Starwave</span><span class='words_sep'>
+  </span><span class='tstring_content'>https://en.wikipedia.org/wiki/America_Online</span><span class='words_sep'>
+  </span><span class='tstring_content'>https://en.wikipedia.org/wiki/Global_Network_Navigator</span><span class='words_sep'>
+  </span><span class='tstring_content'>https://en.wikipedia.org/wiki/Excite</span><span class='words_sep'>
+</span><span class='tstring_end'>)</span></span>
+
+<span class='comment'># Downloads these 6 URLs using 5 threads in &quot;parallel&quot; (as in, Ruby parallel)
+</span><span class='id identifier rubyid_titles'>titles</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Sparmap.html" title="Sparmap (module)">Sparmap</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Sparmap/Pool.html" title="Sparmap::Pool (class)">Pool</a></span></span><span class='period'>.</span><span class='id identifier rubyid_with_pool'><span class='object_link'><a href="Sparmap/Pool.html#with_pool-class_method" title="Sparmap::Pool.with_pool (method)">with_pool</a></span></span><span class='lparen'>(</span><span class='label'>workers:</span> <span class='int'>5</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_pool'>pool</span><span class='op'>|</span>
+  <span class='id identifier rubyid_result'>result</span> <span class='op'>=</span> <span class='id identifier rubyid_pool'>pool</span><span class='period'>.</span><span class='id identifier rubyid_imap_unordered'>imap_unordered</span><span class='lparen'>(</span><span class='const'>URL_LIST</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_url'>url</span><span class='op'>|</span>
+    <span class='const'>URI</span><span class='period'>.</span><span class='id identifier rubyid_open'>open</span><span class='lparen'>(</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_f'>f</span><span class='op'>|</span> <span class='id identifier rubyid_f'>f</span><span class='period'>.</span><span class='id identifier rubyid_read'>read</span><span class='lbracket'>[</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>&lt;title&gt;(.*)&lt;\/title&gt;</span><span class='regexp_end'>/</span></span><span class='comma'>,</span> <span class='int'>1</span><span class='rbracket'>]</span> <span class='rbrace'>}</span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_result'>result</span><span class='period'>.</span><span class='id identifier rubyid_to_a'>to_a</span>
+<span class='kw'>end</span>
+
+<span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>And the titles are...</span><span class='tstring_end'>&#39;</span></span>
+<span class='id identifier rubyid_titles'>titles</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_title'>title</span><span class='op'>|</span> <span class='id identifier rubyid_puts'>puts</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>- </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_title'>title</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span> <span class='rbrace'>}</span>
+</code></pre>
+
+<p>Clearly, Ruby suffers from <a href="https://en.wikipedia.org/wiki/Global_interpreter_lock">GILitis</a> much like Python, meaning 
+threads are good for I/O bound workloads. Caveat emptor.</p>
+
+<h2 id="license">License</h2>
+
+<p>The gem is available as open source under the terms of the <a href="https://opensource.org/licenses/MIT">MIT License</a>.</p>
+</div></div>
+
+      <div id="footer">
+  Generated on Mon Apr 12 17:56:22 2021 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.9.26 (ruby-2.6.3).
+</div>
+
+    </div>
+  </body>
+</html>
