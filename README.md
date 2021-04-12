@@ -1,7 +1,7 @@
 # sparmap
 
 A Simple PARallel MAP for Ruby. Based on the 
-[Python multiprocessing API](https://docs.python.org/3/library/multiprocessing.html#multiprocessing.pool.Pool) API,
+[Python multiprocessing API](https://docs.python.org/3/library/multiprocessing.html#multiprocessing.pool.Pool),
 implements an unordered map operation which runs on threads. 
 
 ## Installation
