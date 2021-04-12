@@ -1,0 +1,5 @@
+.idea
+.rspec_status
+.rubocop.yml
+.yardoc
+Gemfile.lock
