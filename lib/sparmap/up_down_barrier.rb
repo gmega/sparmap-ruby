@@ -1,6 +1,6 @@
-# A simple barrier which admits both increments and decrements. Threads calling {#wait} will be blocked as long
-# the barrier {#count} is greater than zero, and will be release when it becomes zero.
 module Sparmap
+  # A simple barrier which admits both increments and decrements. Threads calling {#wait} will be blocked as long
+  # the barrier {#count} is greater than zero, and will be release when it becomes zero.
   class UpDownBarrier
 
     # The current value for this {UpDownBarrier}'s counter.

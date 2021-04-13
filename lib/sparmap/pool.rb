@@ -1,10 +1,9 @@
 require 'ostruct'
 
-# {Sparmap::Pool} implements a thread-based worker pool which can run tasks in parallel through one of its task
-# submission methods. Currently, the only submission method available is {#imap_unordered}. The API is inspired by
-# the {https://docs.python.org/3/library/multiprocessing.html#multiprocessing.pool.Pool Python multiprocessing API}.
-
 module Sparmap
+  # {Sparmap::Pool} implements a thread-based worker pool which can run tasks in parallel through one of its task
+  # submission methods. Currently, the only submission method available is {#imap_unordered}. The API is inspired by
+  # the {https://docs.python.org/3/library/multiprocessing.html#multiprocessing.pool.Pool Python multiprocessing API}.
   class Pool
 
     POISON_PILL = Object.new
