@@ -12,7 +12,7 @@ Gem::Specification.new do |spec|
     A Simple PARallel MAP for Ruby. Based on the Python Pool API, implements an unordered map operation 
     which runs on threads (thus, good for I/O bound workloads only).
   eof
-  spec.homepage      = "https://github.com/gmemga/sparmap-ruby"
+  spec.homepage      = "https://github.com/gmega/sparmap-ruby"
   spec.license       = "MIT"
   spec.required_ruby_version = Gem::Requirement.new(">= 2.6.3")
 
